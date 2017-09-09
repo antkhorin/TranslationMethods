@@ -1,0 +1,16 @@
+E [int val;]
+EE [int val = 0;]
+T [int val;]
+TT [int val = 1;]
+F [int val;]
+FF [int val = 1;]
+N [int val;]
+
+S : $a=E {System.out.println(a.val);}
+$a=E : $b=T $c=EE {a.val = b.val + c.val;}
+$a=EE : '+' $b=T $c=EE {a.val = b.val + c.val;} | 'e'
+$a=T : $b=F $c=TT {a.val = b.val * c.val;}
+$a=TT : '*' $b=F $c=TT {a.val = b.val * c.val;} | 'e'
+$a=F : $b=N $c=FF {a.val = (int)Math.pow(b.val, c.val);}
+$a=FF : '^' $b=F {a.val = b.val;} | 'e'
+$a=N : '(' $b=E ')' {a.val = b.val;} | '0' {a.val = 0;} | '1' {a.val = 1;} | '2' {a.val = 2;} | '3' {a.val = 3;} | '4' {a.val = 4;} | '5' {a.val = 5;} | '6' {a.val = 6;} | '7' {a.val = 7;} | '8' {a.val = 9;} | '9' {a.val = 9;}

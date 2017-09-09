@@ -1,0 +1,5 @@
+s[int val;]
+e[int val;]
+
+$a=s[int i]: $b=e[i] {a.val = b.val;}
+$a=e[int i]: {a.val = i + 1;}
